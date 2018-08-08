@@ -29,14 +29,13 @@ public class TesteActivity extends AppCompatActivity {
         if(valor == 1){
             iv.setImageResource(R.drawable.teste1);
 
-  
+
         }else if(valor == 2){
             iv.setImageResource(R.drawable.teste2);
 
 
         }else if(valor == 3){
             iv.setImageResource(R.drawable.teste3);
-
 
         }
 
@@ -56,11 +55,19 @@ public class TesteActivity extends AppCompatActivity {
                     data.putString("resultado",n);
                     intent.putExtras(data);
 
-                    setResult(valor);
+                    setResult(valor,intent);
 
                     finish();
                 }
 
+
+            }
+        });
+
+        Button botaoCancelar = findViewById(R.id.botaoCancelar);
+        botaoCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
             }
         });

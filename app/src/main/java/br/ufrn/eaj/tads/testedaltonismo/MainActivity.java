@@ -3,10 +3,14 @@ package br.ufrn.eaj.tads.testedaltonismo;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+
+    int cont = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(),TesteActivity.class);
                 intent.putExtra("valorImg", 1);
 
-                startActivityForResult(intent, 01);
+                startActivityForResult(intent, 15);
             }
         });
 
@@ -31,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), TesteActivity.class);
                 intent.putExtra("valorImg",02);
-                startActivityForResult(intent,01);
+                startActivityForResult(intent,16);
             }
         });
 
@@ -41,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(),TesteActivity.class);
                 intent.putExtra("valorImg",03);
-                startActivityForResult(intent,01);
+                startActivityForResult(intent,17);
             }
         });
 
@@ -49,7 +53,15 @@ public class MainActivity extends AppCompatActivity {
         botaoVerificar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Falta implementação
+
+                TextView resultadoFinal = findViewById(R.id.textResultado);
+
+                if(cont == 3){
+                    resultadoFinal.setText("Você está bem!");
+                }else{
+                    resultadoFinal.setText("Você está mal!");
+                }
+                cont = 0;
             }
         });
     }
@@ -57,9 +69,38 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        Bundle dados = data.getExtras();
+        String valor = dados.getString("resultado");
+
+
         //É o código padrão que foi passado
         if(requestCode == 01){
 
+            Log.i("valor","Teste selecionado: "+resultCode);
+            Log.i("valor","Valor: "+valor);
+
+
         }
+
+        if(requestCode == 15){
+            TextView tv = findViewById(R.id.resposta1);
+            tv.setText(valor);
+            if(valor.equals("2") ){
+                cont++;
+            }
+        }else if(requestCode == 16){
+            TextView tv = findViewById(R.id.resposta2);
+            tv.setText(valor);
+            if(valor.equals("29")){
+                cont++;
+            }
+        }else if(requestCode == 17){
+            TextView tv = findViewById(R.id.resposta3);
+            tv.setText(valor);
+            if(valor.equals("74")){
+                cont++;
+            }
+        }
+
     }
 }
