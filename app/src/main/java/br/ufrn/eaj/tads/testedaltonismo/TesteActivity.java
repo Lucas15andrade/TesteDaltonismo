@@ -68,8 +68,19 @@ public class TesteActivity extends AppCompatActivity {
         botaoCancelar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Log.i("valor","Entrou no botão cancelar");
+                Intent intent = new Intent();
+                setResult(RESULT_CANCELED,intent);
+                finish();
             }
         });
+
+
     }
+    /*
+    public void cancelar(View v){
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+    */
 }

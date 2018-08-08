@@ -68,39 +68,32 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-
+        Log.i("valor","entrou no OnActivity");
+        Log.i("valor","ResultCode: "+resultCode);
         Bundle dados = data.getExtras();
-        String valor = dados.getString("resultado");
-
-
-        //É o código padrão que foi passado
-        if(requestCode == 01){
-
-            Log.i("valor","Teste selecionado: "+resultCode);
-            Log.i("valor","Valor: "+valor);
-
-
-        }
-
-        if(requestCode == 15){
-            TextView tv = findViewById(R.id.resposta1);
-            tv.setText(valor);
-            if(valor.equals("2") ){
-                cont++;
-            }
-        }else if(requestCode == 16){
-            TextView tv = findViewById(R.id.resposta2);
-            tv.setText(valor);
-            if(valor.equals("29")){
-                cont++;
-            }
-        }else if(requestCode == 17){
-            TextView tv = findViewById(R.id.resposta3);
-            tv.setText(valor);
-            if(valor.equals("74")){
-                cont++;
+        if(dados != null){
+            String valor = dados.getString("resultado");
+            if(requestCode == 15){
+                TextView tv = findViewById(R.id.resposta1);
+                tv.setText(valor);
+                if(valor.equals("2") ){
+                    cont++;
+                }
+            }else if(requestCode == 16){
+                TextView tv = findViewById(R.id.resposta2);
+                tv.setText(valor);
+                if(valor.equals("29")){
+                    cont++;
+                }
+            }else if(requestCode == 17){
+                TextView tv = findViewById(R.id.resposta3);
+                tv.setText(valor);
+                if(valor.equals("74")){
+                    cont++;
+                }
             }
         }
+
 
     }
 }
