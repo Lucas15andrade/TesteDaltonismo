@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
                     resultadoFinal.setText("Você está mal!");
                 }
                 cont = 0;
+
+                TextView r1 = findViewById(R.id.resposta1);
+                r1.setText("Resposta_1");
+
+                TextView r2 = findViewById(R.id.resposta2);
+                r2.setText("Resposta_2");
+
+                TextView r3 = findViewById(R.id.resposta3);
+                r3.setText("Resposta_3");
             }
         });
     }
