@@ -55,7 +55,7 @@ public class TesteActivity extends AppCompatActivity {
                     data.putString("resultado",n);
                     intent.putExtras(data);
 
-                    setResult(valor,intent);
+                    setResult(RESULT_OK,intent);
 
                     finish();
                 }
@@ -75,12 +75,5 @@ public class TesteActivity extends AppCompatActivity {
             }
         });
 
-
     }
-    /*
-    public void cancelar(View v){
-        setResult(RESULT_CANCELED);
-        finish();
-    }
-    */
 }
