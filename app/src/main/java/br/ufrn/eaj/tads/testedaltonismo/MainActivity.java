@@ -178,12 +178,15 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
         Log.i("valor","entrou no OnActivity");
         Log.i("valor","ResultCode: "+resultCode);
-        Bundle dados = data.getExtras();
 
-        if(dados != null){
-
+        if(data == null || resultCode == RESULT_CANCELED){
+            Toast.makeText(this, "Erro ao restaurar", Toast.LENGTH_SHORT).show();
+            return;
+        }else{
+            Bundle dados = data.getExtras();
             String valor = dados.getString("resultado");
             if(requestCode == 15){
 
@@ -216,10 +219,11 @@ public class MainActivity extends AppCompatActivity {
 
 
             }
-        }else if(data == null || resultCode == RESULT_CANCELED){
-            Toast.makeText(this, "Erro ao restaurar", Toast.LENGTH_SHORT).show();
         }
 
+        if(resultCode == 0){
+            Log.i("valor","Result code é igual a ZERO");
+        }
 
     }
 }
